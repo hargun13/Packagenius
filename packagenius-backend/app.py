@@ -19,16 +19,16 @@ app.secret_key = 'rohit0407rai'
 
 
 # Initialize Firebase app
-cred = credentials.Certificate('vois-34fe5-firebase-adminsdk-8uvva-810ecb184f.json')
+cred = credentials.Certificate('Enter Certificate path here')
 firebase_admin.initialize_app(cred,options={
-    'storageBucket': 'vois-34fe5.appspot.com'
+    'storageBucket': 'Enter bucket link here'
 })
 db = firestore.client()
 bucket = storage.bucket()
 mockup_api_url = "https://api-inference.huggingface.co/models/rohit0407rai/product-mockup-generator"
 dieline_api_url = "https://api-inference.huggingface.co/models/rohit0407rai/product-dieline-model"
-headers = {"Authorization": "Bearer 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"}
-API_KEY = "msy_hYeqMLUfHMyzzrGSP14HW7P7ofv8x7QaK7KJ"
+headers = {"Authorization": "Bearer **Enter key**"}
+API_KEY = "Enter Meshy API key"
 BASE_URL = "https://api.meshy.ai/v1"
 # Global variable to store user ID
 global_user_id = None
@@ -303,7 +303,7 @@ def get_model():
 
 
 
-genai.configure(api_key="AIzaSyAUV0qh7tfsK1cwWWr3c9fxk6NS17UWPyE")
+genai.configure(api_key="gemini api key here")
 
 def get_gemini_response(prompt):
     model = genai.GenerativeModel('gemini-pro')
