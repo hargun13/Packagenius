@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask API Website</title>
+</head>
+<body>
+<form id="generateModelForm">
+    <label for="imageUrl">Image URL:</label><br>
+    <input type="text" id="imageUrl" name="imageUrl" placeholder="Enter Image URL"><br>
+    <button type="button" onclick="generateModel()">Generate 3D Model</button>
+    <p id="modelUrl" style="display: none;"></p>
+</form>
+
+<script>
+function generateModel() {
+        var imageUrl = document.getElementById("imageUrl").value;
+        var data = { image_url: imageUrl };
+
+        fetch('http://127.0.0.1:5000/generate_model', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            var modelUrl = data.model_url;
+            document.getElementById("modelUrl").innerText = "Model URL: " + modelUrl;
+            document.getElementById("modelUrl").style.display = "block";
+        }).catch(function(error) {
+            console.error('Error:', error);
+            alert("Error generating 3D model. Please try again.");
+        });
+    }
+
+</script>
+
+</body>
+</html>

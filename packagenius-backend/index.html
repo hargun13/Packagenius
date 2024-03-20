@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask API Website</title>
+</head>
+<body>
+
+<h1>User Registration</h1>
+<form id="registrationForm">
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br>
+    <button type="button" onclick="registerUser()">Register</button>
+</form>
+
+<h1>User Login</h1>
+<form id="loginForm">
+    <label for="email">Email:</label><br>
+    <input type="email" id="loginEmail" name="email"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="loginPassword" name="password"><br>
+    <button type="button" onclick="loginUser()">Login</button>
+</form>
+
+<div id="dashboard" style="display: none;">
+    <h1>Welcome to Dashboard</h1>
+    <p id="userData"></p>
+</div>
+
+<h1>User Chat Data</h1>
+<div id="chatData"></div>
+<form id="generateModelForm">
+    <label for="imageUrl">Image URL:</label><br>
+    <input type="text" id="imageUrl" name="imageUrl" placeholder="Enter Image URL"><br>
+    <button type="button" onclick="generateModel()">Generate 3D Model</button>
+    <p id="modelUrl" style="display: none;"></p>
+</form>
+
+<script>
+    function registerUser() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var data = { email: email, password: password };
+
+        fetch('http://127.0.0.1:5000/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            alert(data.message);
+        }).catch(function(error) {
+            console.error('Error:', error);
+        });
+    }
+
+    function loginUser() {
+    var email = document.getElementById("loginEmail").value;
+    var password = document.getElementById("loginPassword").value;
+    var data = { email: email, password: password };
+
+    fetch('http://127.0.0.1:5000/signin', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(function(response) {
+        return response.json();
+    }).then(function(data) {
+        console.log(data); // Log the response data for debugging
+        alert(data.message);
+        if (data.message === "User signed in successfully") {
+            console.log("User logged in successfully"); // Log a message for debugging
+            document.getElementById("dashboard").style.display = "block";
+            fetch('http://127.0.0.1:5000/dashboard')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("userData").innerText = JSON.stringify(data);
+                })
+                .catch(error => console.error('Error:', error));
+
+                fetch('http://127.0.0.1:5000/getChatData')
+                    .then(response => response.json())
+                    .then(data => {
+                        const chatDataDiv = document.getElementById('chatData');
+                        if (data.chats && data.chats.length > 0) {
+                            chatDataDiv.innerHTML = ''; // Clear previous chat data
+                            data.chats.forEach(chat => {
+                                const chatElement = document.createElement('div');
+                                chatElement.innerHTML = `
+                                    <p><strong>Prompt:</strong> ${chat.prompt}</p>
+                                    <p><strong>Dieline Image Link:</strong> <a href="${chat.dieline_image_link}" target="_blank">${chat.dieline_image_link}</a></p>
+                                    <p><strong>Mockup Image Link:</strong> <a href="${chat.mockup_image_link}" target="_blank">${chat.mockup_image_link}</a></p>
+                                    <hr>
+                                `;
+                                chatDataDiv.appendChild(chatElement);
+                            });
+                        } else {
+                            chatDataDiv.innerHTML = '<p>No chat data available.</p>';
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+        }
+    }).catch(function(error) {
+        console.error('Error:', error);
+    });
+}
+function generateModel() {
+        var imageUrl = document.getElementById("imageUrl").value;
+        var data = { image_url: imageUrl };
+
+        fetch('http://127.0.0.1:5000/generate_model', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            var modelUrl = data.model_url;
+            document.getElementById("modelUrl").innerText = "Model URL: " + modelUrl;
+            document.getElementById("modelUrl").style.display = "block";
+        }).catch(function(error) {
+            console.error('Error:', error);
+            alert("Error generating 3D model. Please try again.");
+        });
+    }
+
+</script>
+
+</body>
+</html>

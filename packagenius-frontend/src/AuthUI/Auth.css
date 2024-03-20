@@ -1,0 +1,11 @@
+.auth_image {
+    -webkit-box-shadow: 75px 10px 171px 20px rgb(28, 70, 67);
+    -moz-box-shadow: 75px 10px 171px 20px rgba(28, 70, 67);
+    box-shadow: 75px 10px 171px 20px rgba(28, 70, 67);
+}
+
+.buttons {
+    -webkit-box-shadow: inset 0px 0px 86px -45px rgba(255, 255, 255, 0.71);
+    -moz-box-shadow: inset 0px 0px 86px -45px rgba(255,255,255,0.71);
+    box-shadow: inset 0px 0px 86px -45px rgba(255,255,255,0.71);
+}
