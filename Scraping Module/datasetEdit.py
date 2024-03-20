@@ -5,7 +5,7 @@ import csv
 import time
 
 
-genai.configure(api_key="AIzaSyAUV0qh7tfsK1cwWWr3c9fxk6NS17UWPyE")
+genai.configure(api_key="enter api key here")
 
 def send_to_gemini_api(description):
     
