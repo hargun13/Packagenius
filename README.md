@@ -25,7 +25,7 @@ Ensure you have the following installed:
 ### Installation
 
 1. Clone the PackageGenius repository:
-   git clone https://github.com/rohit0407rai/Packagenius.git
+   git clone https://github.com/hargun13/Packagenius.git
 2. Navigate to the PackageGenius directory:
    cd PackageGenius
 3. Install the necessary dependencies:
