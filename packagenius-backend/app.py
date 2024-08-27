@@ -301,9 +301,7 @@ def get_model():
 
 
 
-
-
-genai.configure(api_key="AIzaSyAUV0qh7tfsK1cwWWr3c9fxk6NS17UWPyE")
+genai.configure(api_key="AIzaSyD-80HpTpeqNyigQXLiTNjpjOC0Ix87usw")
 
 def get_gemini_response(prompt):
     model = genai.GenerativeModel('gemini-pro')
