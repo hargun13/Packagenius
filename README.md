@@ -1,6 +1,6 @@
 # Packagenius
 
-Welcome to PackageGenius, the all-in-one solution for product packaging design, compliance checks, and visualization. With PackageGenius, users can easily generate images of their product packaging, create accurate dielines for production, and ensure that their designs meet industry compliance standards. Our interactive compliance checklist further simplifies the process, allowing you to track your progress and ensure all requirements are met.
+Welcome to Packagenius, the all-in-one solution for product packaging design, compliance checks, and visualization. With Packagenius, users can easily generate images of their product packaging, create accurate dielines for production, and ensure that their designs meet industry compliance standards. Our interactive compliance checklist further simplifies the process, allowing you to track your progress and ensure all requirements are met.
 
 ## Features
 
@@ -26,11 +26,11 @@ Ensure you have the following installed:
 
 1. Clone the PackageGenius repository:
    git clone https://github.com/hargun13/Packagenius.git
-2. Navigate to the PackageGenius directory:
-   cd PackageGenius
+2. Navigate to the Packagenius directory:
+   cd Packagenius
 3. Install the necessary dependencies:
    pip i -r requirements.txt
-4.To use PackageGenius, start by running the application:
+4.To use Packagenius, start by running the application:
    npm start
 5.To generate a product image or dieline, navigate to the 'Generate' section and enter your prompt:
    prompt_template="English Language Prompt"
