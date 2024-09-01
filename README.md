@@ -1,4 +1,4 @@
-# PackageGenius
+# Packagenius
 
 Welcome to PackageGenius, the all-in-one solution for product packaging design, compliance checks, and visualization. With PackageGenius, users can easily generate images of their product packaging, create accurate dielines for production, and ensure that their designs meet industry compliance standards. Our interactive compliance checklist further simplifies the process, allowing you to track your progress and ensure all requirements are met.
 
