@@ -15,7 +15,7 @@ import tempfile
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)
-app.secret_key = 'rohit0407rai'
+app.secret_key = 'enter key here'
 
 
 # Initialize Firebase app
@@ -299,15 +299,7 @@ def get_model():
         return jsonify({"error": str(e)}), 500
     
 
-
-
-<<<<<<< HEAD
-genai.configure(api_key="AIzaSyD-80HpTpeqNyigQXLiTNjpjOC0Ix87usw")
-=======
-
-
 genai.configure(api_key="gemini api key here")
->>>>>>> d7d6d7036a63fbd994849060a94f47ef2be5ded8
 
 def get_gemini_response(prompt):
     model = genai.GenerativeModel('gemini-pro')
